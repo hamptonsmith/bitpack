@@ -1,0 +1,17 @@
+{
+  "name": "@shieldsbetter/bitpack",
+  "version": "0.0.1",
+  "description": "Utility for creating buffers of bits irrespective of byte-alignment.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node tests/indexTests.js"
+  },
+  "author": "Hampton Smith",
+  "license": "ISC",
+  "dependencies": {
+    "@shieldsbetter/sberror": "0.0.2"
+  },
+  "devDependencies": {
+    "random-seed": "^0.3.0"
+  }
+}
