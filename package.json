@@ -1,10 +1,14 @@
 {
   "name": "@shieldsbetter/bitpack",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Utility for creating buffers of bits irrespective of byte-alignment.",
   "main": "index.js",
   "scripts": {
     "test": "node tests/indexTests.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hamptonsmith/bitpack.git"
   },
   "author": "Hampton Smith",
   "license": "ISC",
