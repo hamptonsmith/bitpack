@@ -1,6 +1,6 @@
 {
   "name": "@shieldsbetter/bitpack",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Utility for creating buffers of bits irrespective of byte-alignment.",
   "main": "index.js",
   "scripts": {
