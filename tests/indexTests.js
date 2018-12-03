@@ -377,6 +377,26 @@ assert.equal(
     }
 }
 
+packTests.forEach((test, testNumber) => {
+    const bufferToTest = new Bitpack('128 bits');
+    test.writes.forEach(bitDescription => {
+        bitDescription = bitDescription.replace(/ /g, '');
+        
+        const value = parseInt(bitDescription, 2);
+        bufferToTest.pack(value, Bitpack.bits(bitDescription.length));
+    });
+    
+    const expectedBuffer = Buffer.from(test.expected, 'hex');
+    
+    if (bufferToTest.bitfield.compare(expectedBuffer) !== 0) {
+        console.log('not the same on Test ' + testNumber);
+        console.log('expected: ' + expectedBuffer.toString('hex'));
+        console.log('found:    ' + bufferToTest.bitfield.toString('hex'));
+        
+        throw new Error();
+    }
+});
+
 {
     // Fuzz test!
     
@@ -452,26 +472,6 @@ console.log('All tests passed.');
 // ############################################################################
 // ## Helper methods                                                         ##
 // ############################################################################
-
-packTests.forEach((test, testNumber) => {
-    const bufferToTest = new Bitpack('128 bits');
-    test.writes.forEach(bitDescription => {
-        bitDescription = bitDescription.replace(/ /g, '');
-        
-        const value = parseInt(bitDescription, 2);
-        bufferToTest.pack(value, Bitpack.bits(bitDescription.length));
-    });
-    
-    const expectedBuffer = Buffer.from(test.expected, 'hex');
-    
-    if (bufferToTest.bitfield.compare(expectedBuffer) !== 0) {
-        console.log('not the same on Test ' + testNumber);
-        console.log('expected: ' + expectedBuffer.toString('hex'));
-        console.log('found:    ' + bufferToTest.bitfield.toString('hex'));
-        
-        throw new Error();
-    }
-});
 
 function concatArray(a) {
     let result = '';
