@@ -58,8 +58,10 @@ module.exports = class {
             });
         }
         
-        this.bitfield.copy(
-                dest, destOffsetOctet, 0, Math.ceil(this.bitfieldCursor / 8));
+        const octetLength = Math.ceil(this.bitfieldCursor / 8);
+        this.bitfield.copy(dest, destOffsetOctet, 0, octetLength);
+        
+        return octetLength;
     }
     
     getAvailableFreeBits() {
